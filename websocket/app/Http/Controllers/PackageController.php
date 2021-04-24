@@ -40,7 +40,7 @@ class PackageController extends Controller
         $all = $request->all();
         $package = Package::create($all);
        
-        return response()->json($package);
+        return  return view('welcome');
     }
 
     /**

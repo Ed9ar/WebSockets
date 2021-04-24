@@ -17,10 +17,10 @@
         <br>
         <div class="row">
             <div class="col-8">
-                <form>
+                <form action="{{route('package.store')}}" method="post">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
-                      <input type="text" class="form-control" id="name" placeholder="Package name">
+                      <input type="text" class="form-control" name="name" placeholder="Package name">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
