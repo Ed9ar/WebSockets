@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Package;
 
 class PackageController extends Controller
 {
@@ -24,6 +25,7 @@ class PackageController extends Controller
     public function create()
     {
         //
+        return view('package.create');
     }
 
     /**
@@ -35,6 +37,10 @@ class PackageController extends Controller
     public function store(Request $request)
     {
         //
+        $all = $request->all();
+        $package = Package::create($all);
+       
+        return response()->json($package);
     }
 
     /**
@@ -69,6 +75,7 @@ class PackageController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**
