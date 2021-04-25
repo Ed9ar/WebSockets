@@ -3,7 +3,7 @@
 {{-- <link href='../css/dragula.css' rel='stylesheet' type='text/css' />
 <link href='../css/example.css' rel='stylesheet' type='text/css' /> --}}
 <link rel="stylesheet" href="{{ asset('/css/dragula.css')}}">
-<link rel="stylesheet" href="{{ asset('/css/example.css')}}">
+<link rel="stylesheet" href="{{ asset('/css/dashboard.css')}}">
 <title>Dashboard</title>
 
   <div class='parent center'>
