@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'App\Http\Controllers\PackageController@index');
 
 Route::resource('package', 'App\Http\Controllers\PackageController');

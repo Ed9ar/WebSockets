@@ -15,6 +15,9 @@ class PackageController extends Controller
     public function index()
     {
         //
+        $packages = Package::all();
+        //dd($packages);
+        return view('index', ['packages' => $packages]);
     }
 
     /**
@@ -38,9 +41,10 @@ class PackageController extends Controller
     {
         //
         $all = $request->all();
-        $package = Package::create($all);
-       
-        return  return view('welcome');
+        $package = new Package();
+        $package->name = $all['name'];
+        $package->save();
+        return view('index');
     }
 
     /**
@@ -52,6 +56,7 @@ class PackageController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
