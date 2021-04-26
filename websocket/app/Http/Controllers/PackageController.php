@@ -44,7 +44,7 @@ class PackageController extends Controller
         $package = new Package();
         $package->name = $all['name'];
         $package->save();
-        return view('index');
+        return redirect()->route('package.index');
     }
 
     /**
@@ -56,7 +56,7 @@ class PackageController extends Controller
     public function show($id)
     {
         //
-        
+
     }
 
     /**
@@ -80,7 +80,7 @@ class PackageController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+
     }
 
     /**
