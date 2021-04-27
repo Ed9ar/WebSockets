@@ -30,52 +30,51 @@
 
 
 <title>Dashboard</title>
-
-  <div class='parent center'>
+<div class='parent center'>
 
     <label for='hy'>Dashboard de pedidos y entregas</label>
     <div class='wrapper'>
-
-      <div id='linea-planta' class='container'>
-        <h2>1. Salida de planta</h2>
-        @foreach ($packages as $item)
-        @if ($item->status == 1)
-        <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
-        @endif
-        @endforeach
-      </div>
-      <div id='linea-ldc' class='container'>
-        <h2>2. En Local Delivery Center</h2>
-        @foreach ($packages as $item)
-        @if ($item->status == 2)
-        <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
-        @endif
-        @endforeach
-      </div>
-      <div id='linea-entrega' class='container'>
-        <h2>3. En proceso de entrega</h2>
-        @foreach ($packages as $item)
-        @if ($item->status == 3)
-        <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
-        @endif
-        @endforeach
-      </div>
-      <div id='linea-entregado' class='container'>
-        <h2>4. Entregado</h2>
-        @foreach ($packages as $item)
-        @if ($item->status == 4)
-        <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
-        @endif
-        @endforeach
-      </div>
-      <div id='linea-fallido' class='container'>
-        <h2>5. Fallido</h2>
-        @foreach ($packages as $item)
-        @if ($item->status == 5)
-        <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
-        @endif
-        @endforeach
-      </div>
-  </div>
+        <div id='linea-planta' class='container'>
+            <h2>1. Salida de planta</h2>
+            @foreach ($packages as $item)
+                @if ($item->status == 1)
+                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                @endif
+            @endforeach
+        </div>
+        <div id='linea-ldc' class='container'>
+            <h2>2. En Local Delivery Center</h2>
+            @foreach ($packages as $item)
+                @if ($item->status == 2)
+                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                @endif
+            @endforeach
+        </div>
+        <div id='linea-entrega' class='container'>
+            <h2>3. En proceso de entrega</h2>
+            @foreach ($packages as $item)
+                @if ($item->status == 3)
+                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                @endif
+            @endforeach
+        </div>
+        <div id='linea-entregado' class='container'>
+            <h2>4. Entregado</h2>
+            @foreach ($packages as $item)
+                @if ($item->status == 4)
+                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                @endif
+            @endforeach
+        </div>
+        <div id='linea-fallido' class='container'>
+            <h2>5. Fallido</h2>
+            @foreach ($packages as $item)
+                @if ($item->status == 5)
+                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</div>
 <script src="{{ asset('/js/dragula.js')}}"></script>
 <script src="{{ asset('/js/dashboard.js')}}"></script>
