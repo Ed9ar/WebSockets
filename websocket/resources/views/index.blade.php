@@ -7,23 +7,18 @@
 <div class="container">
 
         <br>
-        <br>
-        <div class="row justify-content-center">
-            <h4>Add Package</h4>
-        </div>
-        <br>
         <div class="row">
             <div class="col-8">
                 <form action="{{route('package.store')}}" method="post">
                 @csrf
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Name</label>
+                      <label for="" style="color:white;">Paqueteria</label>
                       <input type="text" class="form-control" name="name" placeholder="Package name">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
             </div>
-
+            <div style=text-align:right;color:white;background-color:green;>Pedido NOMBRE actualizado</div>
         </div>
 
     </div>
