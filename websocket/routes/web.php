@@ -17,4 +17,3 @@ use App\Http\Controllers\Api\PackageController;
 Route::get('/', 'App\Http\Controllers\PackageController@index');
 
 Route::resource('package', 'App\Http\Controllers\PackageController');
-Route::put('package/1','PackageController@update');

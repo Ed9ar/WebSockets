@@ -37,15 +37,10 @@
             <h2>1. Salida de planta</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 1)
-                    <div id = "{{$item->id}}">Pedidosas  {{$item->id}} 
+                    <div id = "{{$item->id}}">Pedidos {{$item->id}} 
                         <br>
                         {{$item->name}}
                         <br>
-                        <form action="{{route('package.update', $item -> id)}}" method = "POST">
-                            @csrf
-                            @method('PUT')
-                            <button  id="1" type="submit">Update</button>
-                        </form> 
                     </div>
                     
                 @endif
@@ -55,7 +50,7 @@
             <h2>2. En Local Delivery Center</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 2)
-                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                    <div id = "{{$item->id}}">Pedido {{$item->id}} <br>{{$item->name}}</div>
                 @endif
             @endforeach
         </div>
@@ -63,7 +58,7 @@
             <h2>3. En proceso de entrega</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 3)
-                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                    <div id = "{{$item->id}}">Pedido {{$item->id}} <br>{{$item->name}}</div>
                 @endif
             @endforeach
         </div>
@@ -71,9 +66,8 @@
             <h2>4. Entregado</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 4)
-                    <div>
-                        Pedido 
-                        <p id = "pedido-id">{{$item->id}}</p> 
+                    <div id = "{{$item->id}}">
+                        Pedido {{$item->id}}
                         <br>
                         {{$item->name}}
                     </div>
@@ -84,7 +78,7 @@
             <h2>5. Fallido</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 5)
-                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                    <div id = "{{$item->id}}">Pedido {{$item->id}} <br>{{$item->name}}</div>
                 @endif
             @endforeach
         </div>

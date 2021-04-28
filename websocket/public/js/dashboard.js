@@ -34,11 +34,11 @@ drake.on('drop',function(el,target,source,sibling){
 function updatePackage(id, status){
    
     console.log(id, status);
-    let str = 'http://127.0.0.1:8000/package/'+id+''
+    let str = 'http://127.0.0.1:8000/package/'+id+'?_method=PUT'
     console.log(str);
     $.ajax({
         url: str,
-        method: 'PUT',
+        method: 'POST',
         headers:{
             'Accept': 'application/json',
             'X-CSRF-Token': $('meta[name="csrf-token"').attr('content')
@@ -46,6 +46,7 @@ function updatePackage(id, status){
         data:{
             id:id,
             status:status,
+           
                 
         }
     }).done(function(response) {
