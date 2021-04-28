@@ -4,6 +4,8 @@
 <link href='../css/example.css' rel='stylesheet' type='text/css' /> --}}
 <link rel="stylesheet" href="{{ asset('/css/dragula.css')}}">
 <link rel="stylesheet" href="{{ asset('/css/dashboard.css')}}">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="container">
 
         <br>
@@ -25,6 +27,8 @@
 
 
 <title>Dashboard</title>
+
+
 <div class='parent center'>
 
     <label for='hy'>Dashboard de pedidos y entregas</label>
@@ -33,7 +37,17 @@
             <h2>1. Salida de planta</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 1)
-                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                    <div id = "{{$item->id}}">Pedidosas  {{$item->id}} 
+                        <br>
+                        {{$item->name}}
+                        <br>
+                        <form action="{{route('package.update', $item -> id)}}" method = "POST">
+                            @csrf
+                            @method('PUT')
+                            <button  id="1" type="submit">Update</button>
+                        </form> 
+                    </div>
+                    
                 @endif
             @endforeach
         </div>
@@ -57,7 +71,12 @@
             <h2>4. Entregado</h2>
             @foreach ($packages as $item)
                 @if ($item->status == 4)
-                    <div>Pedido {{$item->id}} <br>{{$item->name}}</div>
+                    <div>
+                        Pedido 
+                        <p id = "pedido-id">{{$item->id}}</p> 
+                        <br>
+                        {{$item->name}}
+                    </div>
                 @endif
             @endforeach
         </div>
@@ -73,3 +92,7 @@
 </div>
 <script src="{{ asset('/js/dragula.js')}}"></script>
 <script src="{{ asset('/js/dashboard.js')}}"></script>
+<script>
+    
+
+</script>

@@ -79,7 +79,10 @@ class PackageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
+        $package = Package::find($id);
+        $package->status =  $request->input('status');
+        $package->save();
 
     }
 
