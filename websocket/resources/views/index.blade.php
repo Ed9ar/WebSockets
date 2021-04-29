@@ -86,7 +86,7 @@
 </div>
 <script src="{{ asset('/js/dragula.js')}}"></script>
 <script src="{{ asset('/js/dashboard.js')}}"></script>
+<script src='js/app.js'></script>
 <script>
-    
-
+       
 </script>

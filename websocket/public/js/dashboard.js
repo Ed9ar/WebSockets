@@ -57,3 +57,10 @@ function updatePackage(id, status){
     });
     
 }
+
+/*
+import Echo from 'laravel-echo';
+
+Echo.channel('testChannel').listen('PackageUpdateNotification', (e) => {
+    console.log(e);
+});*/
