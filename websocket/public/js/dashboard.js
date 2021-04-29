@@ -19,23 +19,53 @@ var drake = dragula([document.getElementById('linea-planta'), document.getElemen
 
 drake.on('drop',function(el,target,source,sibling){
     if(target ==  document.getElementById('linea-ldc'))
+    {
         updatePackage(el.id, 2);
+        updateEvent(el.id, 2,"name");
+    }
    
-    if(target ==  document.getElementById('linea-entrega'))
-        updatePackage(el.id, 3);   
+    if(target ==  document.getElementById('linea-entrega')){
+        updatePackage(el.id, 3);
+        updateEvent(el.id, 3,"name");   
+    }
 
-    if(target ==  document.getElementById('linea-entregado'))
+    if(target ==  document.getElementById('linea-entregado')){
         updatePackage(el.id, 4);
+        updateEvent(el.id, 4,"name");
+    }
 
-    if(target ==  document.getElementById('linea-fallido'))
+    if(target ==  document.getElementById('linea-fallido')){
         updatePackage(el.id, 5);
+        updateEvent(el.id, 5,"name");
+    }
+
     
 })
+function updateEvent(id, status, name){
+
+    let str = 'http://127.0.0.1:8000/event/'+id+'/'+status+'/'+name
+    
+    $.ajax({
+        url: str,
+        method: 'GET',
+        headers:{
+            'Accept': 'application/json',
+            'X-CSRF-Token': $('meta[name="csrf-token"').attr('content')
+        }
+    }).done(function(response) {
+        console.log( "Exito");
+    })
+    .fail(function(jqXHR, response) {
+        console.log('Fallido', response);
+    });
+    
+}
+
 function updatePackage(id, status){
    
-    console.log(id, status);
+    
     let str = 'http://127.0.0.1:8000/package/'+id+'?_method=PUT'
-    console.log(str);
+    
     $.ajax({
         url: str,
         method: 'POST',

@@ -44,7 +44,7 @@ class PackageController extends Controller
         $package = new Package();
         $package->name = $all['name'];
         $package->save();
-        return redirect()->route('package.index');
+        return response()->json($package);
     }
 
     /**

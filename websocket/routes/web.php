@@ -16,8 +16,8 @@ use App\Events\PackageUpdateNotification;
 */
 
 //Sustituir mensaje 
-Route::get('/event/{package}', function($package){
-    event(new PackageUpdateNotification($package));
+Route::get('/event/{package}/{status}/{name}', function($package, $status, $name){
+    event(new PackageUpdateNotification($package, $status, $name));
 });
 
 Route::get('listen', function(){

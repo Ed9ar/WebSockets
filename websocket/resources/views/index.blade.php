@@ -11,16 +11,16 @@
         <br>
         <div class="row">
             <div class="col-8">
-                <form action="{{route('package.store')}}" method="post">
-                @csrf
+               
+               
                     <div class="form-group">
                       <label for="" style="color:white;">Paqueteria</label>
-                      <input type="text" class="form-control" name="name" placeholder="Package name">
+                      <input id = "name" type="text" class="form-control" name="name" placeholder="Package name">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                    <button type="submit" class="btn btn-primary" onclick = createPackage()>Submit</button>
+                 
             </div>
-            <div id="notif" style=text-align:right;color:white;background-color:green;>Pedido NOMBRE actualizado</div>
+            <div id="notif" style=text-align:right;color:white;background-color:green;></div>
         </div>
 
     </div>
@@ -90,8 +90,62 @@
 <script>
       
         window.Echo.channel('testChannel').listen('PackageUpdateNotification', (e) => {
+
+            
+            var lineaPlanta = document.querySelector('#linea-planta');
+            var lineaLdc = document.querySelector('#linea-ldc');
+            var lineaEntrega= document.querySelector('#linea-entrega');
+            var lineaEntregado = document.querySelector('#linea-entregado');
+            var lineaFallido = document.querySelector('#linea-fallido');
+
+
             console.log(e);
-            console.log("hellos");
-            document.getElementById("notif").innerHTML = e.package;
+            if (e.status == 1) {
+                var node = document.createElement('DIV');
+                node.setAttribute("id",e.package)
+                node.innerHTML ='Pedidos '+e.package+''+e.name
+                lineaPlanta.append(node)
+                document.getElementById("notif").innerHTML = "El paquete " + e.package + " fue creado";
+            }
+            if (e.status == 2) {
+                lineaLdc.append( document.getElementById(e.package))
+                document.getElementById("notif").innerHTML = "El paquete " + e.package + " se modifico";
+            }
+            if (e.status == 3) {
+                lineaEntrega.append( document.getElementById(e.package))
+                document.getElementById("notif").innerHTML = "El paquete " + e.package + " se modifico";
+            }
+            if (e.status == 4) {
+                lineaEntregado.append( document.getElementById(e.package))
+                document.getElementById("notif").innerHTML = "El paquete " + e.package + " se modifico";
+            }
+            if (e.status == 5) {
+                lineaFallido.append( document.getElementById(e.package))
+                document.getElementById("notif").innerHTML = "El paquete " + e.package + " se modifico";
+            }
         }); 
+
+        function createPackage() {
+            let theDescription = $('#name').val();
+            var lineaPlanta = document.querySelector('#linea-planta');
+            console.log("POSt")
+            $.ajax({
+                url: '{{ route('package.store') }}',
+                method: 'POST',
+                headers:{
+                    'Accept': 'application/json',
+                    'X-CSRF-Token': $('meta[name="csrf-token"').attr('content')
+                },
+                data: {
+                    name: theDescription
+                }
+            })
+            .done(function(response) {
+                console.log('Éxitoso',response);
+                updateEvent(response.id, 1, response.name)
+            })
+            .fail(function(jqXHR, response) {
+                console.log('Fallido', response);
+            });
+        }
 </script>

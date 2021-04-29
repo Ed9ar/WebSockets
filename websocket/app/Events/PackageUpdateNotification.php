@@ -15,15 +15,19 @@ class PackageUpdateNotification implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $package;
+    public $status;
+    public $name;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($package)
+    public function __construct($package, $status, $name)
     {
         //
         $this->package = $package;
+        $this->status = $status;
+        $this->name = $name;
     }
 
     /**
