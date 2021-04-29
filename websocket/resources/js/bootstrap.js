@@ -28,8 +28,10 @@ window.Echo = new Echo({
      forceTLS: true
  });
 
+console.log("hellos");
 window.Echo.channel('testChannel').listen('PackageUpdateNotification', (e) => {
     console.log(e);
+    console.log("hellos");
 }); 
 
 /*

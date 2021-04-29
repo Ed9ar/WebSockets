@@ -20,7 +20,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
             </div>
-            <div style=text-align:right;color:white;background-color:green;>Pedido NOMBRE actualizado</div>
+            <div id="notif" style=text-align:right;color:white;background-color:green;>Pedido NOMBRE actualizado</div>
         </div>
 
     </div>
@@ -88,5 +88,10 @@
 <script src="{{ asset('/js/dashboard.js')}}"></script>
 <script src='js/app.js'></script>
 <script>
-       
+      
+        window.Echo.channel('testChannel').listen('PackageUpdateNotification', (e) => {
+            console.log(e);
+            console.log("hellos");
+            document.getElementById("notif").innerHTML = e.package;
+        }); 
 </script>

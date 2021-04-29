@@ -21,7 +21,7 @@ Route::get('/event/{package}', function($package){
 });
 
 Route::get('listen', function(){
-    
+    listen();
     //return redirect()->route('package.index');
 });
 

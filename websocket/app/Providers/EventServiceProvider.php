@@ -7,6 +7,8 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Events\PackageUpdateNotification;
+
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +20,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            PackageUpdateNotification::class,
         ],
     ];
 
@@ -26,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    
+
     public function boot()
     {
         //

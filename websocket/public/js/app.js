@@ -1876,8 +1876,10 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   cluster: "us2",
   forceTLS: true
 });
+console.log("hellos");
 window.Echo.channel('testChannel').listen('PackageUpdateNotification', function (e) {
   console.log(e);
+  console.log("hellos");
 });
 /*
 
